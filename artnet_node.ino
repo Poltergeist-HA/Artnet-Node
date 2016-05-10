@@ -152,7 +152,7 @@ void fill_art_node(artnet_node_t *node)
   node->sub            = 0x00;        // low byte of the Node Subnet Address
   
   // **************************** art-net address of universes **********************************
-  node->swout      [0] = 0x00;        // This array defines the 8 bit Universe address of the available output channels.
+  node->swout      [0] = ARTNET_UNIVERSE;        // This array defines the 8 bit Universe address of the available output channels.
   node->swout      [1] = 0x01;        // values from 0x00 to 0xFF
   node->swout      [2] = 0x02;
   node->swout      [3] = 0x03;

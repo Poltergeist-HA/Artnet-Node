@@ -5,3 +5,5 @@
 #define BROADCAST_IP  10,   42,   13,  255           // broadcast IP address
 #define GATEWAY_IP    10,   42,   13,    2           // gateway IP address (use ip address of controller)
 #define SUBNET_MASK  255,  255,  255,    0           // network mask (art-net use 'A' network type)
+
+#define ARTNET_UNIVERSE  0x01
