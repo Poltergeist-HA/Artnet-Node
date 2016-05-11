@@ -139,8 +139,8 @@ void fill_art_node(artnet_node_t *node)
   memcpy (node->subnetMask, factory_subnetMask, 4);     // network mask (art-net use 'A' network type)
   
   sprintf((char *)node->id, "Art-Net\0"); // *** don't change never ***
-  sprintf((char *)node->shortname, "deskontrol node\0");
-  sprintf((char *)node->longname, "Art-net Node v0.2 (c) 2013 Toni Merino - www.deskontrol.net\0");
+  sprintf((char *)node->shortname, ARTNET_SHORT);
+  sprintf((char *)node->longname, ARTNET_LONG);
     
   memset (node->porttypes,  0x80, 4);
   memset (node->goodinput,  0x08, 4);
