@@ -270,15 +270,11 @@ void setup()
   Udp.begin(ArtNode.localPort);
 
   send_reply(BROADCAST, (uint8_t *)&ArtPollReply, sizeof(ArtPollReply));
-
-  markFirst();
 }
 
 int pos = 0;
 void loop() 
 {
-  // doBroadcast();
-
   int packetSize = Udp.parsePacket();
   if(packetSize)
   {
