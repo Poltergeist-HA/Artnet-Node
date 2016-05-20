@@ -40,18 +40,17 @@
 
 #include <EEPROM.h>
 #include "config.h"
-#include "poltergeist-ha-arduino-core.h"
 
 // An EthernetUDP instance to let us send and receive packets over UDP
 EthernetUDP Udp;
 
 #define   USE_UNIVERSE_0      // remember universe 0 now is USART 0, Arduino output pin 1
 
-// uint8_t factory_mac          [6] = {   1,   2,   3,   0,   0,  10}; // the mac address of node
-uint8_t factory_localIp      [4] = { LOCAL_IP };           // the IP address of node
-uint8_t factory_broadcastIp  [4] = { BROADCAST_IP };           // broadcast IP address
-uint8_t factory_gateway      [4] = { GATEWAY_IP };           // gateway IP address (use ip address of controller)
-uint8_t factory_subnetMask   [4] = { SUBNET_MASK };           // network mask (art-net use 'A' network type)
+uint8_t factory_mac          [6] = { MAC_ADDRESS };      // the mac address of node
+uint8_t factory_localIp      [4] = { LOCAL_IP };         // the IP address of node
+uint8_t factory_broadcastIp  [4] = { BROADCAST_IP };     // broadcast IP address
+uint8_t factory_gateway      [4] = { GATEWAY_IP };       // gateway IP address (use ip address of controller)
+uint8_t factory_subnetMask   [4] = { SUBNET_MASK };      // network mask (art-net use 'A' network type)
   
 artnet_node_t             ArtNode;
 artnet_reply_t            ArtPollReply;
@@ -128,10 +127,7 @@ void fill_art_node(artnet_node_t *node)
   memset (node, 0, sizeof(artnet_node_t));
   
   //fill data
-  //memcpy (node->mac, factory_mac, 6);                   // the mac address of node
-  uint8_t* mac = getMacAddress();
-  memcpy (node->mac, mac, 6);                   // the mac address of node
-  free(mac);
+  memcpy (node->mac, factory_mac, 6);                   // the mac address of node
 
   memcpy (node->localIp, factory_localIp, 4);           // the IP address of node
   memcpy (node->broadcastIp, factory_broadcastIp, 4);   // broadcast IP address
